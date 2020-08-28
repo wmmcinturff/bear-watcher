@@ -6,13 +6,13 @@ const printToDom = (divId, textToPrint) => {
 const bearArray = [];
 
 const buttonEvents = () => {
-    document.getElementById('addBearBtn').addEventListener('click', buildForm);
+    document.getElementById('addBearBtn').addEventListener('click', buildBearForm);
     document.getElementById('bear-form').addEventListener('click', addTheBear);
     document.getElementById('bear-form').addEventListener('click', buildBearCards);
    
 };
 
-const buildForm = () => {
+const buildBearForm = () => {
     let domString = '';
     domString += `<h2 class="text-center">Enter Bear Sighting</h2>`;
     domString +=  `<form class="form-inline justify-content-center"     id="whole-form">
@@ -21,11 +21,11 @@ const buildForm = () => {
                     </div>
                    <div class="form-group mx-sm-3 mb-2">
                    <label for="bearsName">Bear Name</label>
-                   <input type="text" class="form-control" placeholder="Yogi Bear">
+                   <input type="text" class="form-control" id="inputBear" placeholder="Yogi Bear">
                     </div>
                    <div class="form-group mb-2">
                    <label for="exampleURL">URL</label>
-                   <input type="url" class="form-control" placeholder="www.bear.com">
+                   <input type="url" class="form-control" id="inputURL">
                    </div>
                     <button type="submit" class="btn btn-primary mb-2" id="form-btn">Add Bear</button>
                    </form>`;
@@ -36,34 +36,39 @@ const buildForm = () => {
   const addTheBear = (e) => {
     const target = e.target.id;
         const newBear = {
-      name: document.getElementById("bear-form").value,
-      
+      name: document.getElementById("inputBear").value,
+      url: document.getElementById("inputURL").value,
     }
   
-    if (target === 'addBearBtn' && newBear.name !== '') {
-    bear-cards.push(newBear);
+    if (target === 'form-btn' && newBear.name !== '' && newBear.url !== '') {
+    bearArray.push(newBear);
   }};
 
 
   const buildBearCards = (e) => {
     const target = e.target.id;
     let domString = "";
-    const bearName = document.getElementById('Bear').value;
+    const bearName = document.getElementById('bear-cards').value;
     
-    if (target === 'addBearBtn') {
+    if (target === 'form-btn') {
         if (bearName === '') {
-    domString += `<h2 class="text-center">Add A Bear</h2>`;
-    domString +=  `<form class="form-inline justify-content-center"     id="whole-form">
-                    <div class="form-group mb-2">
-                      <label for="bearName" class="bears">Bear Name</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticBear" value="Bear Name:">
-                    </div>
-                   <div class="form-group mx-sm-3 mb-2">
-                     <label for="addURL" class="url">Bear</label>
-                     <input type="text" class="form-control" id="Bear" placeholder="Yogi Bear">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2" id="form-btn">Add Bear</button>
-                  </form>`;
+            let domString = '';
+            domString += `<h2 class="text-center">Enter Bear Sighting</h2>`;
+            domString +=  `<form class="form-inline justify-content-center"     id="whole-form">
+                            <div class="form-group mb-2">
+                           <input type="text" readonly class="form-control-plaintext" id="staticBear">
+                            </div>
+                           <div class="form-group mx-sm-3 mb-2">
+                           <label for="bearsName">Bear Name</label>
+                           <input type="text" class="form-control" id="inputBear" placeholder="Yogi Bear">
+                            </div>
+                           <div class="form-group mb-2">
+                           <label for="exampleURL">URL</label>
+                           <input type="url" class="form-control" id="inputURL">
+                           </div>
+                            <button type="submit" class="btn btn-primary mb-2" id="form-btn">Add Bear</button>
+                           </form>`;
+          
   
     printToDom("bear-form", domString);
   };
@@ -75,12 +80,12 @@ else {
                       <div class="card-body"id="${i}">
                         <h5 class="card-title">${bearArray[i].name}</h5>
                         <p class="card-text">${bearArray[i].url}</p>
-                        
-                      </div>
+                        </div>
                     </div>`;
     }
       printToDom("bear-cards", domString);
-      document.getElementById('Bear').value = '';
+      document.getElementById('inputBear').value = '';
+      document.getElementById('inputURL').value = '';
   }
   };
   buttonEvents();
