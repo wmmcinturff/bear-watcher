@@ -1,0 +1,24 @@
+body {
+    background-color: slategray;
+    background-image: url("./images/MistayaRiver.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+};
+
+.jumbotron {
+    align-items: center;
+}
+.bearText {
+    text-align: center;
+    color: rgb(16, 97, 97);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    
+}
+
+.bearThanks {
+    text-align: center;
+    color: rgb(16, 97, 97);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
