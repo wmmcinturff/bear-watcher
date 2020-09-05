@@ -3,11 +3,9 @@ body {
     background-image: url("./images/MistayaRiver.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-};
-
-.jumbotron {
-    align-items: center;
 }
+
+
 .bearText {
     text-align: center;
     color: rgb(16, 97, 97);
@@ -21,4 +19,35 @@ body {
     color: rgb(16, 97, 97);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
+}
+
+#bear-form {
+    background-color: seashell;
+    color: burnt sandybrown;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+
+#bear-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    
+}
+
+#datBear {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+.card-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: navy;
+    text-align: center;
+   
 }
